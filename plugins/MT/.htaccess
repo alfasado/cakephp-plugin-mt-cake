@@ -1,0 +1,4 @@
+#deny from all
+Options -Indexes
+Options +ExecCGI
+AddType application/x-httpd-cgi .cgi
