@@ -11,7 +11,6 @@ MTCake is template engine for CakePHP. Powerd by Movable Type Open Source and Dy
 
 ## System Requirements
 
-+ Movable Type 5.11
 + CakePHP 1.3.10
 
 
