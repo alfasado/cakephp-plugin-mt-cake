@@ -37,7 +37,11 @@ MTCake is template engine for CakePHP. Powerd by Movable Type Open Source and Dy
     class PostsController extends AppController {
         var $name = 'Posts';
         function index() {
-            $this->set('posts', $this->Post->find('all'));
+             $this->set('posts', $this->Post->find('all'));
+        }
+        function view($id = null) {
+            $this->Post->id = $id;
+            $this->set('post', $this->Post->read());
         }
     }
     ?>
@@ -77,6 +81,11 @@ MTCake is template engine for CakePHP. Powerd by Movable Type Open Source and Dy
             // or $ctx->stash( 'posts', $this->Post->find( 'all' ) ); 
             // => <mt:cake:loop model="Post" stash="posts">~</mt:cake:loop>
         }
+        function view( $id = null ) {
+            $ctx = $this->ctx;
+            $this->Post->id = $id;
+            $ctx->stash( 'Post', $this->Post->read() );
+        }
     }
     ?>
 
@@ -106,3 +115,10 @@ MTCake is template engine for CakePHP. Powerd by Movable Type Open Source and Dy
     </table>
     </mt:if>
     </mt:cake:loop>
+
+    <!-- File: /app/views/posts/view.ctp -->
+    <mt:cake:object model="Post">
+    <h1><mt:var name="title" escape="html"></h1>
+    <p><small>Created: <mt:var name="created"></small></p>
+    <p><mt:var name="body"></p>
+    </mt:cake:object>

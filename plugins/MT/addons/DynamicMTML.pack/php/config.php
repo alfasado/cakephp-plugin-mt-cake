@@ -24,6 +24,7 @@ class DynamicMTML_pack extends MTPlugin {
         'tags' => array( // Template Tags
             'block'    => array( 'dynamicmtml' => 'dynamicmtml',
                                  'cakeloop' => 'cakeloop',
+                                 'cakeobject' => 'cakeobject',
                                  'rawmtml' => 'rawmtml',
                                  'nondynamicmtml' => 'nondynamicmtml',
                                  'clientauthorblock' => 'clientauthorblock',
@@ -245,6 +246,11 @@ class DynamicMTML_pack extends MTPlugin {
     function cakeloop ( $args, $content, &$ctx, &$repeat ) {
         require_once( $this->tags_dir() . 'block.mtcakeloop.php' );
         return smarty_block_mtcakeloop( $args, $content, $ctx, $repeat );
+    }
+
+    function cakeobject ( $args, $content, &$ctx, &$repeat ) {
+        require_once( $this->tags_dir() . 'block.mtcakeobject.php' );
+        return smarty_block_mtcakeobject( $args, $content, $ctx, $repeat );
     }
 
     function rawmtml ( $args, $content, &$ctx, &$repeat ) {

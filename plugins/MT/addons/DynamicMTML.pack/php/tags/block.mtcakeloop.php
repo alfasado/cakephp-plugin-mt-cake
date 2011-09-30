@@ -26,7 +26,11 @@ function smarty_block_mtcakeloop ( $args, $content, &$ctx, &$repeat ) {
         $loop = array();
         if ( $objects ) {
             foreach ( $objects as $obj ) {
-                array_push( $loop, $obj[ 'Post' ] );
+                if ( isset( $obj[ $name ] ) ) {
+                    array_push( $loop, $obj[ $name ] );
+                } else {
+                    array_push( $loop, $obj );
+                }
             }
             $vars[ $name ] = $loop;
         }
